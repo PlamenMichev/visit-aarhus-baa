@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../../components/Card';
+import { getAllPlaces } from '../../services/VisitAarhusService';
 import './styles.css';
 
 export default function DiscoverPage() {
@@ -7,22 +8,9 @@ export default function DiscoverPage() {
 
   useEffect(() => {
     async function getPlaces() {
-      const url =
-        'https://raw.githubusercontent.com/manypossibles/designops/master/assets/data/en/data.json';
-      const response = await fetch(url);
-      const data = await response.json();
-      const filteredrest = [];
-
-      try {
-        for (var i = 0; i < data.length; i++) {
-          var place = data[i];
-          // console.log(place.Name + ' ' + place.MainCategory.Name);
-          filteredrest.push(place);
-        }
-      } catch (error) {
-        console.log('Oh come on! These should be easy peeps! What');
-      }
-      setPlaces(filteredrest);
+      const data = await getAllPlaces();
+      console.log('data', data[0]);
+      setPlaces(data);
     }
     getPlaces();
   }, []);
