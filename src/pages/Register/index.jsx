@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, registerWithEmailAndPassword, signInWithGoogle } from '../../firebase';
+import { PATHS } from '../../utils/config';
 import './styles.css';
 
 function RegisterPage() {
@@ -18,7 +19,7 @@ function RegisterPage() {
   };
   useEffect(() => {
     if (loading) return;
-    if (user) navigate('/discover');
+    if (user) navigate(PATHS.DiscoverPage);
   }, [user, loading]);
   return (
     <div className="register">

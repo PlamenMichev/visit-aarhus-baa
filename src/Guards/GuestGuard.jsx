@@ -2,6 +2,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Navigate } from 'react-router-dom';
 import Loader from '../components/Loader';
 import { auth } from '../firebase';
+import { PATHS } from '../utils/config';
 
 // eslint-disable-next-line react/prop-types
 const GuestGuard = ({ children }) => {
@@ -12,7 +13,7 @@ const GuestGuard = ({ children }) => {
   }
 
   if (!loading && user !== null) {
-    return <Navigate to="/discover" />;
+    return <Navigate to={PATHS.DiscoverPage} />;
   }
 
   return <>{children}</>;

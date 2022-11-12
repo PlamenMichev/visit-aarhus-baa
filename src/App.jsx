@@ -11,7 +11,7 @@ function App() {
     <Routes>
       <Route path={PATHS.DiscoverPage} element={<DiscoverPage />} />
       <Route
-        path="/login"
+        path={PATHS.LoginPage}
         element={
           <GuestGuard>
             <LoginPage />
@@ -19,7 +19,7 @@ function App() {
         }
       />
       <Route
-        path="/register"
+        path={PATHS.RegisterPage}
         element={
           <GuestGuard>
             <RegisterPage />
@@ -27,14 +27,14 @@ function App() {
         }
       />
       <Route
-        path="/password-reset"
+        path={PATHS.ResetPasswordPage}
         element={
           <GuestGuard>
             <ResetPasswordPage />
           </GuestGuard>
         }
       />
-      <Route path="*" element={<Navigate to="/" />} />
+      <Route path="*" element={<Navigate to={PATHS.DiscoverPage} />} />
     </Routes>
   );
 }

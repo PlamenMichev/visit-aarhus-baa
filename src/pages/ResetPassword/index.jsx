@@ -3,6 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { auth, sendPasswordReset } from '../../firebase';
+import { PATHS } from '../../utils/config';
 import './styles.css';
 
 function ResetPasswordPage() {
@@ -12,7 +13,7 @@ function ResetPasswordPage() {
 
   useEffect(() => {
     if (loading) return;
-    if (user) navigate('/discover');
+    if (user) navigate(PATHS.DiscoverPage);
   }, [user, loading]);
 
   return (

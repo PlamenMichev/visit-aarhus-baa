@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { auth } from '../firebase';
 import PropTypes from 'prop-types'; // ES6
 import Loader from '../components/Loader';
+import { PATHS } from '../utils/config';
 
 // eslint-disable-next-line react/prop-types
 const AuthGuard = ({ children }) => {
@@ -13,7 +14,7 @@ const AuthGuard = ({ children }) => {
   }
 
   if (!loading && !user) {
-    return <Navigate to="/discover" />;
+    return <Navigate to={PATHS.DiscoverPage} />;
   }
 
   return <>{children}</>;

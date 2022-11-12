@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, logInWithEmailAndPassword, signInWithGoogle } from '../../firebase';
 import './styles.css';
+import { PATHS } from '../../utils/config';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const LoginPage = () => {
       // maybe trigger a loading screen
       return;
     }
-    if (user) navigate('/discover');
+    if (user) navigate(PATHS.DiscoverPage);
   }, [user, loading]);
 
   return (
