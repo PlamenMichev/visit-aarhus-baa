@@ -9,7 +9,6 @@ export default function DiscoverPage() {
   useEffect(() => {
     async function getPlaces() {
       const data = await getAllPlaces();
-      console.log('data', data[0]);
       setPlaces(data);
     }
     getPlaces();
