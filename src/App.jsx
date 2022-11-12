@@ -1,14 +1,15 @@
-import HomePage from './pages/Home';
 import RegisterPage from './pages/Register';
 import ResetPasswordPage from './pages/ResetPassword';
 import LoginPage from './pages/Login';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import GuestGuard from './Guards/GuestGuard';
+import DiscoverPage from './pages/Discover';
+import { PATHS } from './utils/config';
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path={PATHS.DiscoverPage} element={<DiscoverPage />} />
       <Route
         path="/login"
         element={
@@ -33,6 +34,7 @@ function App() {
           </GuestGuard>
         }
       />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }
