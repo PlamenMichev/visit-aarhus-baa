@@ -25,7 +25,6 @@ const getAllPlaces = async () => {
         : 'No description',
     pictures: place.Files.length >= 1 ? place.Files[0]?.Uri : ''
   }));
-  console.log('1', result);
   return result;
 };
 
