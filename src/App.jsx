@@ -3,20 +3,12 @@ import RegisterPage from './pages/Register';
 import ResetPasswordPage from './pages/ResetPassword';
 import LoginPage from './pages/Login';
 import { Routes, Route } from 'react-router-dom';
-import AuthGuard from './Guards/AuthGuard';
 import GuestGuard from './Guards/GuestGuard';
 
 function App() {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <AuthGuard>
-            <HomePage />
-          </AuthGuard>
-        }
-      />
+      <Route path="/" element={<HomePage />} />
       <Route
         path="/login"
         element={
@@ -25,8 +17,22 @@ function App() {
           </GuestGuard>
         }
       />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/password-reset" element={<ResetPasswordPage />} />
+      <Route
+        path="/register"
+        element={
+          <GuestGuard>
+            <RegisterPage />
+          </GuestGuard>
+        }
+      />
+      <Route
+        path="/password-reset"
+        element={
+          <GuestGuard>
+            <ResetPasswordPage />
+          </GuestGuard>
+        }
+      />
     </Routes>
   );
 }
