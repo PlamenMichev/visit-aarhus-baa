@@ -22,6 +22,8 @@ const getAllPlaces = async () => {
         ? place.Descriptions.filter(
             (description) => description.DescriptionType === 'INTROTEKST'
           )[0].Text
+        : place.Descriptions.length > 0
+        ? place.Descriptions[0].Text
         : 'No description',
     pictures: place.Files.length >= 1 ? place.Files[0]?.Uri : ''
   }));
