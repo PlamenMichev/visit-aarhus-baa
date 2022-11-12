@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 
 const Card = ({ place }) => {
   const placeholder = './images/placeholder.png';
-  if (place.name === 'Bodegaen') {
-    console.log('1', place.description);
-  }
   return (
     <div className="card-wrapper">
       {place.pictures === undefined ? (
