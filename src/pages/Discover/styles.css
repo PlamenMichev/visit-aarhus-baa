@@ -1,0 +1,11 @@
+.place-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.header-img {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-top: -60px;
+}
