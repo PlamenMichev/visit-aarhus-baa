@@ -5,12 +5,30 @@
   font-size: 30px;
 }
 
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+}
+
+.navText {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  width: 100%;
+}
+
 .navigation a {
   text-decoration: none;
   color: black;
   padding: 20px;
-}
-
-.navigation img {
-  height: 70px;
+  display: flex;
+  align-items: center;
 }
