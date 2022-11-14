@@ -14,10 +14,6 @@
   justify-content: center;
 }
 
-.textfield-input::placeholder {
-  padding-left: 1vw;
-}
-
 .textfield-input {
   padding-left: 1vw;
 }

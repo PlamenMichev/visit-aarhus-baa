@@ -8,22 +8,35 @@
   text-align: center;
   height: 40vh;
   box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 0.3vw;
 }
 
 .card-wrapper img {
   width: 10vw;
-  border-radius: 6px;
+  border-radius: 0.3vw;
   display: flex;
   justify-content: center;
   margin-top: 1vw;
 }
 
-.card-description {
+.card-name {
   width: 10vw;
   text-overflow: ellipsis;
   overflow: hidden;
-  -webkit-line-clamp: 7;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  font-size: 2.5vh;
+}
+
+.card-description {
+  text-align: left;
+  width: 10vw;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
   display: -webkit-box;
   max-width: 200px;
   -webkit-box-orient: vertical;
+  font-size: 1.9vh;
 }

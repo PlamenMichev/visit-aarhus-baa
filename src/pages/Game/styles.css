@@ -36,7 +36,7 @@ li:nth-child(4) {
   border: 1px solid black;
   position: relative;
   padding: 0;
-  margin: 100px auto 20px auto;
+  margin: 0 auto 20px auto;
   border-radius: 50%;
   list-style: none;
   overflow: hidden;
@@ -71,14 +71,14 @@ li:nth-child(4) {
   border-right: 15px solid transparent;
   border-top: 50px solid black;
   position: absolute;
-  left: 50%;
-  top: 70px;
+  left: 49%;
+  top: 17vh;
   z-index: 1;
 }
 
 .spin-button {
   position: absolute;
-  left: 40%;
+  left: 45%;
   width: 120px;
   height: 40px;
   background-color: rgb(8, 91, 63);
@@ -90,7 +90,7 @@ li:nth-child(4) {
 }
 
 .rotate-class {
-  animation: start-rotate 1s linear infinite;
+  animation: start-rotate 0.5s linear infinite;
 }
 
 @keyframes start-rotate {
@@ -102,4 +102,19 @@ li:nth-child(4) {
 
 .stop-class {
   animation-play-state: paused;
+}
+
+.wheel-Options input {
+  width: 15vw;
+  height: 3vh;
+  margin: 1vh 0;
+}
+
+.wheel-Options {
+  top: 50vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  left: 10vw;
 }
