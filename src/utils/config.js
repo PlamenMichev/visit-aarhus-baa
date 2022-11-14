@@ -5,5 +5,6 @@ export const PATHS = {
   DiscoverPage: '/',
   LoginPage: '/login',
   RegisterPage: '/register',
-  ResetPasswordPage: '/password-reset'
+  ResetPasswordPage: '/password-reset',
+  gamePage: '/game'
 };

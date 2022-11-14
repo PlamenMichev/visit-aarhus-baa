@@ -14,14 +14,25 @@ function GamePage() {
 
   console.log(name);
 
+  const [option, setoption] = useState('');
+
+  const handleChange = (event) => {
+    setoption(event.target.value);
+
+    console.log('value is:', event.target.value);
+  };
+
   return (
     <main>
       <div>
+        <div>
+          <input type="text" id="option" name="option" onChange={handleChange} value={option} />
+        </div>
         <div className="arrow"></div>
         <ul className={name}>
           <li>
             <div className="text" contentEditable="true" spellCheck="false">
-              1
+              <h2>{option}</h2>
             </div>
           </li>
           <li>
