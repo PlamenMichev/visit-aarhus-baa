@@ -12,9 +12,9 @@
   "plugins": ["react"],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "indent": ["off"],
+    "indent": "off",
     "linebreak-style": ["off", "unix"],
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"]
+    "quotes": ["warn", "single"],
+    "semi": ["warn", "always"]
   }
 }
