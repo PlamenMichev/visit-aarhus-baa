@@ -1,0 +1,29 @@
+.card-wrapper {
+  background-color: rgb(255, 255, 255);
+  margin: 4vw;
+  width: 12vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 40vh;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.15);
+}
+
+.card-wrapper img {
+  width: 10vw;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  margin-top: 1vw;
+}
+
+.card-description {
+  width: 10vw;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 7;
+  display: -webkit-box;
+  max-width: 200px;
+  -webkit-box-orient: vertical;
+}
