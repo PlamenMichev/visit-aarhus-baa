@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Card from '../../components/Card';
 import { getAllPlaces } from '../../services/VisitAarhusService';
 import SearchBar from '../../components/Search';
+import PropTypes from 'prop-types';
 import './styles.css';
 
 export default function DiscoverPage() {
@@ -9,6 +10,8 @@ export default function DiscoverPage() {
   const [originalPlaces, setOriginalPlaces] = useState([]);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+
+  console.log(filteredPlaces);
 
   useEffect(() => {
     async function getPlaces() {
@@ -25,17 +28,17 @@ export default function DiscoverPage() {
     getPlaces();
   }, []);
 
-  const renderFilteredPlaces = () => {
-    return (
-      <div className="place-cards">
-        {[...filteredPlaces].map((places, i) => {
-          return <Card key={i} place={places} />;
-        })}
-      </div>
-    );
-  };
-
-  // <div className="dataResult">{renderFilteredPins(selectedCategory, {})}</div>
+  // const renderFilteredPlaces = () => {
+  //   return (
+  //     <div>
+  //       <div className="place-cards">
+  //         {[...filteredPlaces].map((places, i) => {
+  //           return <Card key={i} place={places} />;
+  //         })}
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
   return (
     <>
@@ -49,10 +52,20 @@ export default function DiscoverPage() {
           setSearchInput={setSearchInput}
         />
       </div>
-      <h2>Places To Eat</h2>
+
       <div>
-        <div>{renderFilteredPlaces(places)}</div>
+        <div className="place-cards">
+          {places
+            .filter((place) => place.category === 'Events')
+            .map((places) => (
+              <Card key={places.id} place={places} />
+            ))}
+        </div>
       </div>
     </>
   );
 }
+
+DiscoverPage.propTypes = {
+  place: PropTypes.object.isRequired
+};
