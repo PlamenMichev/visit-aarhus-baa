@@ -10,6 +10,7 @@ export default function DiscoverPage() {
   const [originalPlaces, setOriginalPlaces] = useState([]);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+
   console.log(filteredPlaces);
 
   useEffect(() => {
