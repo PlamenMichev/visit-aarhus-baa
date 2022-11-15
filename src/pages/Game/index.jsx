@@ -15,7 +15,6 @@ function GamePage() {
   };
 
   console.log(name);
-
   return (
     <main>
       <div>

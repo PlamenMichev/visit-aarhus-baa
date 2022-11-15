@@ -10,7 +10,7 @@ export default function DiscoverPage() {
   const [originalPlaces, setOriginalPlaces] = useState([]);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [searchInput, setSearchInput] = useState('');
-  console.log(filteredPlaces);
+  const [shownAllCategory, setShownAllCategory] = useState('');
 
   useEffect(() => {
     async function getPlaces() {
@@ -27,6 +27,20 @@ export default function DiscoverPage() {
     getPlaces();
   }, []);
 
+  const categories = [...new Set(places.map((q) => q.category))];
+
+  const renderFilteredPlaces = () => {
+    return (
+      <div>
+        <div className="place-cards">
+          {[...filteredPlaces].map((places, i) => {
+            return <Card key={i} place={places} />;
+          })}
+        </div>
+      </div>
+    );
+  };
+  console.log(shownAllCategory);
   return (
     <>
       <div>
@@ -40,19 +54,44 @@ export default function DiscoverPage() {
         />
       </div>
 
-      <div>
-        <div className="place-cards">
-          {places
-            .filter((place) => place.category === 'Events')
-            .map((places) => (
-              <Card key={places.id} place={places} />
-            ))}
-        </div>
+      <div id="render">
+        {searchInput ? (
+          renderFilteredPlaces(filteredPlaces, {})
+        ) : (
+          <div>
+            {categories.map(
+              (category, index) =>
+                (shownAllCategory === '' || shownAllCategory === category) && (
+                  <div key={category + index}>
+                    <div className="category-head">
+                      <h2>{category}</h2>
+                    </div>
+                    <div className="place-cards">
+                      {places
+                        .filter((place) => place.category === category)
+                        .splice(0, shownAllCategory === category ? 100000 : 3)
+                        .map((places) => (
+                          <Card key={places.id} place={places} />
+                        ))}
+                    </div>
+                    <button
+                      onClick={() =>
+                        shownAllCategory === ''
+                          ? setShownAllCategory(category)
+                          : setShownAllCategory('')
+                      }>
+                      {shownAllCategory === '' ? 'See All' : 'Hide'}
+                    </button>
+                  </div>
+                )
+            )}
+          </div>
+        )}
       </div>
     </>
   );
 }
 
 DiscoverPage.propTypes = {
-  place: PropTypes.object.isRequired
+  place: PropTypes.object
 };
