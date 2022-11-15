@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import UserFavourites from '../../components/UserFavourites';
 import UserSideNav from '../../components/UserSideNav';
 import './index.css';
 
@@ -12,7 +13,7 @@ const ProfilePage = () => {
       <div className="side-nav-wrapper">
         <UserSideNav setCurrentTab={(val) => setCurrentTab(val)} />
       </div>
-      {currentTab === PROFILE_TABS[0] && <h1>Nqmam nervi</h1>}
+      {currentTab === PROFILE_TABS[0] && <UserFavourites />}
     </div>
   );
 };
