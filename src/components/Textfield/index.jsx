@@ -41,7 +41,7 @@ TextField.propTypes = {
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   label: PropTypes.string,
-  type: PropTypes.oneOf(['text', 'email']),
+  type: PropTypes.oneOf(['text', 'email', 'search']),
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   onClear: PropTypes.func,

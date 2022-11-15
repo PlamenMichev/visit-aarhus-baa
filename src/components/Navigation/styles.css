@@ -3,6 +3,9 @@
   width: 100vw;
   top: 0;
   font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav {
@@ -30,5 +33,16 @@
   color: black;
   padding: 20px;
   display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navigation img {
+  height: 70px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }

@@ -20,8 +20,8 @@ export default function DiscoverPage() {
   const [user] = useAuthState(auth);
   const [favourites, setFavourites] = useState([]);
   const [refetch, setRefetch] = useState(true);
+  const [shownAllCategory, setShownAllCategory] = useState('');
 
-  filteredPlaces;
   useEffect(() => {
     async function getPlaces() {
       const data = await getAllPlaces();
@@ -60,18 +60,20 @@ export default function DiscoverPage() {
     setRefetch(true);
   };
 
-  // const renderFilteredPlaces = () => {
-  //   return (
-  //     <div>
-  //       <div className="place-cards">
-  //         {[...filteredPlaces].map((places, i) => {
-  //           return <Card key={i} place={places} />;
-  //         })}
-  //       </div>
-  //     </div>
-  //   );
-  // };
+  const categories = [...new Set(places.map((q) => q.category))];
 
+  const renderFilteredPlaces = () => {
+    return (
+      <div>
+        <div className="place-cards">
+          {[...filteredPlaces].map((places, i) => {
+            return <Card key={i} place={places} />;
+          })}
+        </div>
+      </div>
+    );
+  };
+  console.log(shownAllCategory);
   return (
     <>
       <div>
@@ -85,35 +87,61 @@ export default function DiscoverPage() {
         />
       </div>
 
-      <div>
-        <div className="place-cards">
-          {places
-            .filter((place) => place.category === 'Events')
-            .map((places) => {
-              const favourite = favourites?.filter((x) => x.placeId === places.id).length > 0;
-              return (
-                <Card
-                  favourite={favourite}
-                  loggedIn={user}
-                  addToFavourites={(placeId) => addToFavourites(placeId)}
-                  onButtonClick={() =>
-                    favourite
-                      ? removeFromFavourites(
-                          favourites?.filter((x) => x.placeId === places.id)[0].id
-                        )
-                      : addToFavourites(places.id)
-                  }
-                  key={places.id}
-                  place={places}
-                />
-              );
-            })}
-        </div>
+      <div id="render">
+        {searchInput ? (
+          renderFilteredPlaces(filteredPlaces, {})
+        ) : (
+          <div>
+            {categories.map(
+              (category, index) =>
+                (shownAllCategory === '' || shownAllCategory === category) && (
+                  <div key={category + index}>
+                    <div className="category-head">
+                      <h2>{category}</h2>
+                    </div>
+                    <div className="place-cards">
+                      {places
+                        .filter((place) => place.category === category)
+                        .splice(0, shownAllCategory === category ? 100000 : 3)
+                        .map((places) => {
+                          const favourite =
+                            favourites?.filter((x) => x.placeId === places.id).length > 0;
+                          return (
+                            <Card
+                              favourite={favourite}
+                              loggedIn={user}
+                              addToFavourites={(placeId) => addToFavourites(placeId)}
+                              onButtonClick={() =>
+                                favourite
+                                  ? removeFromFavourites(
+                                      favourites?.filter((x) => x.placeId === places.id)[0].id
+                                    )
+                                  : addToFavourites(places.id)
+                              }
+                              key={places.id}
+                              place={places}
+                            />
+                          );
+                        })}
+                    </div>
+                    <button
+                      onClick={() =>
+                        shownAllCategory === ''
+                          ? setShownAllCategory(category)
+                          : setShownAllCategory('')
+                      }>
+                      {shownAllCategory === '' ? 'See All' : 'Hide'}
+                    </button>
+                  </div>
+                )
+            )}
+          </div>
+        )}
       </div>
     </>
   );
 }
 
 DiscoverPage.propTypes = {
-  place: PropTypes.object.isRequired
+  place: PropTypes.object
 };
