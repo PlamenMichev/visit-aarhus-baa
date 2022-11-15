@@ -3,14 +3,23 @@
   width: 100vw;
   top: 0;
   font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navigation a {
   text-decoration: none;
   color: black;
-  padding: 20px;
+  padding: 0 20px;
 }
 
 .navigation img {
   height: 70px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
