@@ -1,0 +1,41 @@
+.side-nav-wrapper-inner {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.logo-image-profile {
+  width: 100px;
+  height: 100px;
+}
+
+.avatar-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-actions-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-profile-link {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+}

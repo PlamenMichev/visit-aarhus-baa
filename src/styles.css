@@ -1,3 +1,7 @@
+* {
+  font-family: sans-serif;
+}
+
 html {
   margin: 0;
   padding: 0;
@@ -6,12 +10,18 @@ html {
 body {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 nav {
   padding: 20px 0;
-  z-index: 1;
-  position: absolute;
   background-color: white;
   max-width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

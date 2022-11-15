@@ -1,0 +1,9 @@
+.profile-wrapper {
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+}
+
+.side-nav-wrapper {
+  width: 30%;
+}

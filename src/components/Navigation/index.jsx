@@ -25,13 +25,13 @@ export default function Nav() {
             />
           </NavLink>
 
-          <NavLink to={PATHS.gamePage}>Game</NavLink>
+          <NavLink to={PATHS.GamePage}>Game</NavLink>
         </div>
         <div>
           {!loading ? (
             user ? (
               <div className="user-actions">
-                <NavLink to={PATHS.profilePage}>
+                <NavLink to={PATHS.ProfilePage}>
                   <img
                     height="40px"
                     className="logo-image"
