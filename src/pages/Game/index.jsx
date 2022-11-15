@@ -3,60 +3,61 @@ import React, { useState } from 'react';
 
 function GamePage() {
   const [name, setName] = useState('circle');
+  const [inputs, setInputs] = useState([{ id: 'input1', value: '' }]);
+
   const startRotation = () => {
     setName('circle rotate-class');
-
+    const randomValue = 1000 + Math.random() * (2000 - 1000);
+    console.log(randomValue);
     setTimeout(() => {
       setName('circle rotate-class stop-class');
-    }, 2500);
+    }, 1231 + randomValue);
   };
 
-  const [one, setone] = useState('');
-  const [two, settwo] = useState('');
-  const [three, setthree] = useState('');
-  const [four, setfour] = useState('');
-
-  const handleChange = (event) => {
-    setone(event.target.value);
-    settwo(event.target.value);
-    setthree(event.target.value);
-    setfour(event.target.value);
-
-    console.log('value is:', event.target.value);
-  };
-
+  console.log(name);
   return (
     <main>
       <div>
         <div className="wheel-Options">
-          <input type="text" id="one" name="one" onChange={handleChange} value={one} />
-          <input type="text" id="two" name="two" onChange={handleChange} value={two} />
-          <input type="text" id="three" name="three" onChange={handleChange} value={three} />
-          <input type="text" id="four" name="four" onChange={handleChange} value={four} />
+          {inputs.map((input) => (
+            <input
+              key={input.id}
+              type="text"
+              id={input.id}
+              onChange={(e) => {
+                const inputsCopy = inputs.splice(0);
+                inputsCopy.filter((x) => x.id === input.id)[0].value = e.target.value;
+                console.log(inputsCopy);
+                setInputs(inputsCopy);
+              }}
+              value={input.value}
+            />
+          ))}
+          <button
+            onClick={() => setInputs([...inputs, { id: `input${inputs.length + 1}`, value: '' }])}>
+            Add option
+          </button>
         </div>
-        <div className="arrow"></div>
+      </div>
+      <div>
         <ul className={name}>
-          <li>
-            <div className="text" spellCheck="false">
-              <h2>{one}</h2>
-            </div>
-          </li>
-          <li>
-            <div className="text" spellCheck="false">
-              <h2>{two}</h2>
-            </div>
-          </li>
-          <li>
-            <div className="text" spellCheck="false">
-              <h2>{three}</h2>
-            </div>
-          </li>
-          <li>
-            <div className="text" spellCheck="false">
-              <h2>{four}</h2>
-            </div>
-          </li>
+          {inputs.map((input) => (
+            <li key={'part' + input.id}>
+              <div
+                className="text"
+                id={`part${input.id}`}
+                style={{
+                  transform: `rotate(${360 / inputs.length}deg)`,
+                  backgroundColor: Math.floor(Math.random() * 16777215).toString(16),
+                  width: 360 / inputs.length + '%'
+                }}>
+                <h2>{input.value}</h2>
+              </div>
+            </li>
+          ))}
         </ul>
+        <div className="arrow" id="arrow"></div>
+
         <button className="spin-button" onClick={startRotation}>
           {' '}
           SPIN
