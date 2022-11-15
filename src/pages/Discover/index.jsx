@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../../components/Card';
-import { getAllPlaces } from '../../services/VisitAarhusService';
+import { getAllPlaces } from '../../services/visitAarhusService';
 import SearchBar from '../../components/Search';
 import PropTypes from 'prop-types';
 import './styles.css';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../firebase';
+import {
+  addToFavouritesAsync,
+  getFavouritesAsync,
+  removeFromFavouritesAsync
+} from '../../services/favouritesService';
 
 export default function DiscoverPage() {
   const [places, setPlaces] = useState([]);
   const [originalPlaces, setOriginalPlaces] = useState([]);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const [user] = useAuthState(auth);
+  const [favourites, setFavourites] = useState([]);
+  const [refetch, setRefetch] = useState(true);
 
-  console.log(filteredPlaces);
-
+  filteredPlaces;
   useEffect(() => {
     async function getPlaces() {
       const data = await getAllPlaces();
@@ -27,6 +36,29 @@ export default function DiscoverPage() {
     }
     getPlaces();
   }, []);
+
+  useEffect(() => {
+    const getFavourites = async () => {
+      const favourites = await getFavouritesAsync(user.uid);
+
+      setFavourites(favourites);
+      setRefetch(false);
+    };
+
+    if (user && refetch) {
+      getFavourites();
+    }
+  }, [user, refetch]);
+
+  const addToFavourites = async (placeId) => {
+    await addToFavouritesAsync(user.uid, placeId);
+    setRefetch(true);
+  };
+
+  const removeFromFavourites = async (docId) => {
+    await removeFromFavouritesAsync(docId);
+    setRefetch(true);
+  };
 
   // const renderFilteredPlaces = () => {
   //   return (
@@ -57,9 +89,25 @@ export default function DiscoverPage() {
         <div className="place-cards">
           {places
             .filter((place) => place.category === 'Events')
-            .map((places) => (
-              <Card key={places.id} place={places} />
-            ))}
+            .map((places) => {
+              const favourite = favourites?.filter((x) => x.placeId === places.id).length > 0;
+              return (
+                <Card
+                  favourite={favourite}
+                  loggedIn={user}
+                  addToFavourites={(placeId) => addToFavourites(placeId)}
+                  onButtonClick={() =>
+                    favourite
+                      ? removeFromFavourites(
+                          favourites?.filter((x) => x.placeId === places.id)[0].id
+                        )
+                      : addToFavourites(places.id)
+                  }
+                  key={places.id}
+                  place={places}
+                />
+              );
+            })}
         </div>
       </div>
     </>
