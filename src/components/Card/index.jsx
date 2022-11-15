@@ -6,7 +6,6 @@ const Card = ({ place }) => {
 
   return (
     <div className="card-wrapper">
-      <p>{place.category}</p>
       {place.pictures === undefined ? (
         <div>
           <img src={placeholder} alt="pic" />

@@ -7,12 +7,9 @@ function GamePage() {
     setName('circle rotate-class');
 
     setTimeout(() => {
-      console.log('here');
       setName('circle rotate-class stop-class');
     }, 2500);
   };
-
-  console.log(name);
 
   const [one, setone] = useState('');
   const [two, settwo] = useState('');

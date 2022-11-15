@@ -2,10 +2,24 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 .header-img {
   width: 100%;
   position: relative;
   overflow: hidden;
   margin-top: -60px;
+}
+
+.category-head {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.category-head h2 {
+  color: #022b52;
+  text-align: center;
 }

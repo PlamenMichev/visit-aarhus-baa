@@ -15,8 +15,6 @@ function App() {
       <Nav />
       <Routes>
         <Route path={PATHS.DiscoverPage} element={<DiscoverPage />} />
-        {/* <Route path="*" element={<Navigate to="/" />} /> */}
-        <Route path={PATHS.DiscoverPage} element={<DiscoverPage />} />
         <Route
           path={PATHS.LoginPage}
           element={
