@@ -27,18 +27,6 @@ export default function DiscoverPage() {
     getPlaces();
   }, []);
 
-  // const renderFilteredPlaces = () => {
-  //   return (
-  //     <div>
-  //       <div className="place-cards">
-  //         {[...filteredPlaces].map((places, i) => {
-  //           return <Card key={i} place={places} />;
-  //         })}
-  //       </div>
-  //     </div>
-  //   );
-  // };
-
   return (
     <>
       <div>
