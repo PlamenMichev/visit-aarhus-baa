@@ -23,13 +23,15 @@ const Card = ({ place, onButtonClick, loggedIn, favourite }) => {
         </div>
       )}
       <div className="card-name-box">
-        {loggedIn && (
-          <button onClick={() => onButtonClick()}>
-            {!favourite ? 'Add to fav' : 'Remove from fav'}
-          </button>
-        )}
         <p className="card-name">{place.name}</p>
         <div className="card-description">{place.description}</div>
+        {loggedIn && (
+          <img
+            style={{ width: '40px', cursor: 'pointer', margin: '10px auto' }}
+            onClick={() => onButtonClick()}
+            src={!favourite ? './images/empty-heart.png' : './images/filled-heart.png'}
+          />
+        )}
       </div>
     </div>
   );
