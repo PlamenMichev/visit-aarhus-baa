@@ -15,13 +15,14 @@
   display: flex;
   flex-direction: row;
   margin: 0 auto;
-  justify-content: space-between;
+  justify-content: center;
+  margin-top: 5%;
 }
 
 .category-head h2 {
   color: #022b52;
   text-align: center;
-  margin-left: 48%;
+  margin-right: 5%;
 }
 
 .changeBtn {
@@ -30,4 +31,22 @@
   border: none;
   cursor: pointer;
   color: red;
+}
+
+.introtext-container-child {
+  text-align: center;
+  width: 65%;
+  font-size: 2.5vh;
+}
+.introtext-container {
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.introtext-head {
+  color: #022b52;
+  font-size: 5vh;
+  font-weight: bold;
 }

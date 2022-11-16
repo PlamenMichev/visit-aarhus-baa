@@ -2,21 +2,21 @@ import './styles.css';
 import React, { useState } from 'react';
 
 const colors = [
+  '#022b52ae',
   '#F44336',
+  '#1560bd',
   '#FFEBEE',
+  '#74b3ce',
   '#FFCDD2',
+  '#10346a',
   '#EF9A9A',
+  '#0197f6',
   '#E57373',
+  '#89cff0',
   '#EF5350',
+  '#26619c',
   '#F44336',
-  '#E53935',
-  '#D32F2F',
-  '#C62828',
-  '#B71C1C',
-  '#FF8A80',
-  '#FF5252',
-  '#FF1744',
-  '#D50000'
+  '#0047ab'
 ];
 
 function GamePage() {

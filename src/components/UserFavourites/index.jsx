@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
 import { getFavouritesAsync } from '../../services/favouritesService';
-import { getAllPlaces } from '../../services/visitAarhusService';
+import { getAllPlaces } from '../../services/VisitAarhusService';
 import Card from '../Card';
 import './index.css';
 
@@ -25,7 +25,7 @@ const UserFavourites = () => {
     }
   }, [user]);
   return (
-    <h1>
+    <h1 className="favorite">
       {favourites.map((place) => (
         <Card key={place.id} favourite={true} loggedIn={false} place={place} />
       ))}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../../components/Card';
-import { getAllPlaces } from '../../services/visitAarhusService';
+import { getAllPlaces } from '../../services/VisitAarhusService';
 import SearchBar from '../../components/Search';
 import PropTypes from 'prop-types';
 import './styles.css';
@@ -92,6 +92,16 @@ export default function DiscoverPage() {
           renderFilteredPlaces(filteredPlaces, {})
         ) : (
           <div>
+            <div className="introtext-container">
+              <p className="introtext-head">Every day wonder of Aarhus</p>
+              <p className="introtext-container-child">
+                Welcome to Aarhus, the City of Everyday Wonder Get ready for simple pleasures and
+                unexpected delights. We are here to make your visit to Aarhus is the most
+                wonder-full experience. Before you pack your bags be sure to check out all of ideas
+                for visitable places. Ready?{' '}
+                <span style={{ color: 'red' }}>Lets get exploring.</span>
+              </p>
+            </div>
             {categories.map(
               (category, index) =>
                 (shownAllCategory === '' || shownAllCategory === category) && (
