@@ -65,6 +65,16 @@ export default function DiscoverPage() {
                   <div key={category + index}>
                     <div className="category-head">
                       <h2>{category}</h2>
+                      <button
+                        className="changeBtn"
+                        onClick={() =>
+                          shownAllCategory === ''
+                            ? setShownAllCategory(category)
+                            : setShownAllCategory('')
+                        }>
+                        {shownAllCategory === '' ? 'See All' : 'Hide'}
+                      </button>
+                      <div></div>
                     </div>
                     <div className="place-cards">
                       {places
@@ -74,14 +84,6 @@ export default function DiscoverPage() {
                           <Card key={places.id} place={places} />
                         ))}
                     </div>
-                    <button
-                      onClick={() =>
-                        shownAllCategory === ''
-                          ? setShownAllCategory(category)
-                          : setShownAllCategory('')
-                      }>
-                      {shownAllCategory === '' ? 'See All' : 'Hide'}
-                    </button>
                   </div>
                 )
             )}

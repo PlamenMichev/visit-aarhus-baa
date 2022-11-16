@@ -16,10 +16,19 @@
   display: flex;
   flex-direction: row;
   margin: 0 auto;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .category-head h2 {
   color: #022b52;
   text-align: center;
+  margin-left: 48%;
+}
+
+.changeBtn {
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  color: red;
 }
