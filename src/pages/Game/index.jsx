@@ -1,6 +1,24 @@
 import './styles.css';
 import React, { useState } from 'react';
 
+const colors = [
+  '#F44336',
+  '#FFEBEE',
+  '#FFCDD2',
+  '#EF9A9A',
+  '#E57373',
+  '#EF5350',
+  '#F44336',
+  '#E53935',
+  '#D32F2F',
+  '#C62828',
+  '#B71C1C',
+  '#FF8A80',
+  '#FF5252',
+  '#FF1744',
+  '#D50000'
+];
+
 function GamePage() {
   const [name, setName] = useState('circle');
   const [inputs, setInputs] = useState([{ id: 'input1', value: '' }]);
@@ -14,10 +32,10 @@ function GamePage() {
     }, 1231 + randomValue);
   };
 
-  console.log(name);
+  console.log(inputs.length / 350);
   return (
-    <main>
-      <div>
+    <main className="wheel-container">
+      <div className="wheel-wrapper">
         <div className="wheel-Options">
           {inputs.map((input) => (
             <input
@@ -39,25 +57,24 @@ function GamePage() {
           </button>
         </div>
       </div>
-      <div>
+      <div className="wheel-wrapper-inner">
         <ul className={name}>
-          {inputs.map((input) => (
-            <li key={'part' + input.id}>
-              <div
-                className="text"
-                id={`part${input.id}`}
-                style={{
-                  transform: `rotate(${360 / inputs.length}deg)`,
-                  backgroundColor: Math.floor(Math.random() * 16777215).toString(16),
-                  width: 360 / inputs.length + '%'
-                }}>
-                <h2>{input.value}</h2>
-              </div>
+          {inputs.map((input, index) => (
+            <li
+              key={'part' + input.id}
+              id={`part${input.id}`}
+              style={{
+                backgroundColor: colors[index],
+                width: '200' + 'px',
+                clipPath: `polygon(100% 0, 50% 100%, 0 0)`,
+                transform: `rotate(${index * 60}deg)`
+              }}>
+              {input.value}
             </li>
           ))}
         </ul>
-        <div className="arrow" id="arrow"></div>
 
+        <div className="arrow" id="arrow"></div>
         <button className="spin-button" onClick={startRotation}>
           {' '}
           SPIN

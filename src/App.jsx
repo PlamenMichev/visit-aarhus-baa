@@ -8,6 +8,7 @@ import GamePage from './pages/Game';
 import Nav from './components/Navigation';
 import { PATHS } from './utils/config';
 import './styles.css';
+import ProfilePage from './pages/Profile';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           }
         />
         <Route path={PATHS.GamePage} element={<GamePage />} />
+        <Route path={PATHS.ProfilePage} element={<ProfilePage />} />
         <Route path="*" element={<Navigate to={PATHS.DiscoverPage} />} />
       </Routes>
     </>

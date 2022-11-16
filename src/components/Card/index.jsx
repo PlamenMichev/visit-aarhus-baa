@@ -1,9 +1,9 @@
 import './styles.css';
 import PropTypes from 'prop-types';
 
-const Card = ({ place }) => {
+// eslint-disable-next-line react/prop-types
+const Card = ({ place, onButtonClick, loggedIn, favourite }) => {
   const placeholder = './images/placeholder.png';
-
   return (
     <div className="card-wrapper">
       {place.pictures === undefined ? (
@@ -25,6 +25,13 @@ const Card = ({ place }) => {
       <div className="card-name-box">
         <p className="card-name">{place.name}</p>
         <div className="card-description">{place.description}</div>
+        {loggedIn && (
+          <img
+            style={{ width: '40px', cursor: 'pointer', margin: '10px auto' }}
+            onClick={() => onButtonClick()}
+            src={!favourite ? './images/empty-heart.png' : './images/filled-heart.png'}
+          />
+        )}
       </div>
     </div>
   );

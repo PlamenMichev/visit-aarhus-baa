@@ -6,5 +6,7 @@ export const PATHS = {
   LoginPage: '/login',
   RegisterPage: '/register',
   ResetPasswordPage: '/password-reset',
-  GamePage: '/game'
+  GamePage: '/game',
+  ProfilePage: '/profile',
+  ProfileFavouritesPage: '/profile/favourites'
 };
