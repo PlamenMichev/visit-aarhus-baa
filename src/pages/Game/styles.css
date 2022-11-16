@@ -7,7 +7,7 @@
   list-style: none;
   overflow: hidden;
   position: relative;
-  margin: 0 auto;
+  margin: 40% auto 0 auto;
 }
 
 .circle li {
@@ -37,6 +37,7 @@
   top: 0;
   transform: translateX(-50%);
   z-index: 1;
+  margin: 40% auto 0 auto;
 }
 
 .spin-button {
@@ -79,6 +80,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  margin: 40% auto 0 auto;
 }
 
 .wheel-wrapper {

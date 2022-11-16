@@ -1,0 +1,4 @@
+.favorite {
+  display: flex;
+  flex-wrap: wrap;
+}
